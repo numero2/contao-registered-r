@@ -16,6 +16,10 @@ class RegisteredR extends Frontend
 {
     public function replaceSymbols( $strContent, $strTemplate )
     {
+
+    	if( strpos($strContent,'®') === FALSE )
+    		return $strContent;
+
         $pos = strpos( $strContent, '<body' );
         return substr($strContent, 0, $pos) . str_replace( '<sup><sup>®</sup></sup>', '<sup>®</sup>', str_replace('®', '<sup>®</sup>', substr($strContent, $pos)) );
     }
